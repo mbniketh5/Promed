@@ -1,1 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
 
+metadata:
+  name: dashboard
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: dashboard
+
+  template:
+    metadata:
+      labels:
+        app: dashboard
+
+    spec:
+      containers:
+      - name: dashboard
+
+        image: i-0e70d648266a8b8b9.dkr.ecr.ap-southeast-2.amazonaws.com/dashboard:v1
+
+        ports:
+        - containerPort: 80

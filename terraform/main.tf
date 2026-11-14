@@ -18,7 +18,7 @@ module "iam" {
 
 module "ecr" {
   source          = "./modules/ecr"
-  #repository_name =  "promed-repo"
+  repository_name =  "promed-repo"
 }
 
 module "eks" {

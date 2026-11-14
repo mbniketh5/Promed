@@ -1,65 +1,69 @@
-#EKS Cluster Role
+# EKS Cluster Role
 resource "aws_iam_role" "eks_cluster_role" {
-
   name = "promed-eks-cluster-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
 
-    Statement = [{
-      Effect = "Allow"
+    Statement = [
+      {
+        Effect = "Allow"
 
-      Principal = {
-        Service = "eks.amazonaws.com"
+        Principal = {
+          Service = "eks.amazonaws.com"
+        }
+
+        Action = "sts:AssumeRole"
       }
-
-      Action = "sts:AssumeRole"
-    }]
+    ]
   })
 }
 
-#Policy Attachment
+# Attach EKS Cluster Policy
 resource "aws_iam_role_policy_attachment" "cluster_policy" {
-
   role       = aws_iam_role.eks_cluster_role.name
-
-  policy_arn =
-"arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 }
 
-#Worker Node Role
-resource "aws_iam_role" "eks_node_role" {
 
+# EKS Worker Node Role
+resource "aws_iam_role" "eks_node_role" {
   name = "promed-eks-node-role"
 
   assume_role_policy = jsonencode({
-    Version="2012-10-17"
+    Version = "2012-10-17"
 
-    Statement = [{
-      Effect="Allow"
+    Statement = [
+      {
+        Effect = "Allow"
 
-      Principal = {
-        Service="ec2.amazonaws.com"
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+
+        Action = "sts:AssumeRole"
       }
-
-      Action="sts:AssumeRole"
-    }]
+    ]
   })
 }
 
-#Node Policies
+
+# Worker Node Policy
 resource "aws_iam_role_policy_attachment" "worker_node" {
-
-  role = aws_iam_role.eks_node_role.name
-
-  policy_arn =
-"arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+  role       = aws_iam_role.eks_node_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
 }
 
+
+# EKS CNI Policy
+resource "aws_iam_role_policy_attachment" "cni_policy" {
+  role       = aws_iam_role.eks_node_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
+}
+
+
+# ECR Read Policy
 resource "aws_iam_role_policy_attachment" "ecr_read" {
-
-  role = aws_iam_role.eks_node_role.name
-
-  policy_arn =
-"arn:aws:iam::aws:policy/AmazonEKSEcrReadPolicy"
+  role       = aws_iam_role.eks_node_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
 }

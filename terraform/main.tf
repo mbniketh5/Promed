@@ -8,17 +8,17 @@ resource "aws_instance" "web" {
 
 module "vpc" {
   source = "./modules/vpc"
-  repository_name = "promed-repo"
+  #repository_name = "promed-repo"
 }
 
 module "iam" {
   source = "./modules/iam"
-  repository_name = "promed-repo"
+  #repository_name = "promed-repo"
 }
 
 module "ecr" {
   source          = "./modules/ecr"
-  repository_name =  "promed-repo"
+  #repository_name =  "promed-repo"
 }
 
 module "eks" {

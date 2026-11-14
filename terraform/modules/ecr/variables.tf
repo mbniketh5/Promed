@@ -1,4 +1,3 @@
-module "ecr" {
-  source          = "./modules/ecr"
-  repository_name = "promed-repo"
+variable "repository_name" {
+  type = string
 }

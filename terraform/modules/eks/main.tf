@@ -1,5 +1,5 @@
 #EKS Cluster
-resour*e "aws_eks_node_group" "nodes" {
+resour*e = "aws_eks_node_group" "nodes" {
 
 * cluster_name = aws_eks_cluster.ek*.name
 
@@ -22,7 +22,7 @@ resour*e "aws_eks_node_group" "nodes" {
 }
 
 #Managed Node Group
-resour*e "aws_eks_node_group" "nodes" {
+resour*e = "aws_eks_node_group" "nodes" {
 
 * cluster_name = aws_eks_cluster.ek*.name
 

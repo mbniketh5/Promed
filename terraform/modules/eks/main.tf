@@ -1,11 +1,11 @@
 #EKS Cluster
-resour*e = "aws_eks_node_group" "nodes" {
+resource "aws_eks_node_group" "nodes" {
 
-* cluster_name = aws_eks_cluster.ek*.name
+cluster_name = aws_eks_cluster.eks.name
 
-  node_group_name = "promed*workers"
+  node_group_name = "promed_workers"
 
-  node_role_arn = var.no*e_role_arn
+  node_role_arn = var.node_role_arn
 
   subnet_ids = var.subnet_ids
 
@@ -22,13 +22,13 @@ resour*e = "aws_eks_node_group" "nodes" {
 }
 
 #Managed Node Group
-resour*e = "aws_eks_node_group" "nodes" {
+resource "aws_eks_node_group" "nodes" {
 
-* cluster_name = aws_eks_cluster.ek*.name
+cluster_name = aws_eks_cluster.eks.name
 
-  node_group_name = "promed*workers"
+  node_group_name = "promed_workers"
 
-  node_role_arn = var.no*e_role_arn
+  node_role_arn = var.node_role_arn
 
   subnet_ids = var.subnet_ids
 

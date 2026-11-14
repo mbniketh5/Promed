@@ -8,25 +8,23 @@ resource "aws_instance" "web" {
 
 module "vpc" {
   source = "./modules/vpc"
+  repository_name = "promed-repo"
 }
 
 module "iam" {
   source = "./modules/iam"
+  repository_name = "promed-repo"
 }
 
 module "ecr" {
-  source               = "./modules/ecr"
-  repository_names     = var.ecr_repository_names
+  source          = "./modules/ecr"
+  repository_name =  "promed-repo"
 }
 
 module "eks" {
   source               = "./modules/eks"
-
-  cluster_name         = var.cluster_name
-
+  cluster_name         = "promed-repo"
   subnet_ids           = module.vpc.public_subnet_ids
-
   cluster_role_arn     = module.iam.eks_cluster_role_arn
-
   node_role_arn        = module.iam.eks_node_role_arn
 }

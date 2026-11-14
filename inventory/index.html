@@ -1,1 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaCare | Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        <div class="logo">P+</div>
+        <div>
+            <h2>PharmaCare</h2>
+            <p>Dashboard Microservice</p>
+        </div>
+    </div>
+
+    <div class="user">ADMIN PANEL</div>
+</header>
+
+<main class="container">
+
+    <section class="welcome">
+        <div>
+            <h1>Production Dashboard</h1>
+            <p>Welcome to pharmaceutical manufacturing operations.</p>
+        </div>
+        <div class="date" id="date"></div>
+    </section>
+
+    <!-- KPI CARDS -->
+    <section class="stats">
+
+        <div class="card yellow">
+            <div class="icon">📦</div>
+            <p>Total Batches</p>
+            <h2>128</h2>
+            <small>↑ 12% this month</small>
+        </div>
+
+        <div class="card orange">
+            <div class="icon">🏭</div>
+            <p>Active Production</p>
+            <h2>18</h2>
+            <small>Currently processing</small>
+        </div>
+
+        <div class="card blue">
+            <div class="icon">🔬</div>
+            <p>QC Pending</p>
+            <h2>09</h2>
+            <small>Awaiting inspection</small>
+        </div>
+
+        <div class="card green">
+            <div class="icon">🧪</div>
+            <p>QA Review</p>
+            <h2>06</h2>
+            <small>Under review</small>
+        </div>
+
+    </section>
+
+    <!-- PRODUCTION TABLE -->
+    <section class="panel">
+
+        <div class="panel-header">
+            <h2>Recent Production Batches</h2>
+            <span class="tag">Production Overview</span>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Batch ID</th>
+                        <th>Medicine</th>
+                        <th>Quantity</th>
+                        <th>Department</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>BT-1024</td>
+                        <td>Paracetamol</td>
+                        <td>5,000</td>
+                        <td>Production</td>
+                        <td><span class="status completed">Completed</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>BT-1025</td>
+                        <td>Vitamin C</td>
+                        <td>3,500</td>
+                        <td>Manufacturing</td>
+                        <td><span class="status processing">Processing</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>BT-1026</td>
+                        <td>Amoxicillin</td>
+                        <td>2,000</td>
+                        <td>Quality Control</td>
+                        <td><span class="status pending">QC Pending</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>BT-1027</td>
+                        <td>Azithromycin</td>
+                        <td>4,000</td>
+                        <td>Quality Assurance</td>
+                        <td><span class="status review">QA Review</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+    <!-- BOTTOM SECTIONS -->
+    <section class="bottom-grid">
+
+        <div class="panel">
+            <h2>Department Performance</h2>
+
+            <div class="performance">
+                <div class="performance-info">
+                    <span>Production</span>
+                    <strong>85%</strong>
+                </div>
+                <div class="progress">
+                    <span style="width:85%"></span>
+                </div>
+            </div>
+
+            <div class="performance">
+                <div class="performance-info">
+                    <span>Quality Control</span>
+                    <strong>78%</strong>
+                </div>
+                <div class="progress orange-bar">
+                    <span style="width:78%"></span>
+                </div>
+            </div>
+
+            <div class="performance">
+                <div class="performance-info">
+                    <span>Quality Assurance</span>
+                    <strong>92%</strong>
+                </div>
+                <div class="progress green-bar">
+                    <span style="width:92%"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2>Recent Activities</h2>
+
+            <div class="activity">
+                <span class="activity-icon">✅</span>
+                <div>
+                    <strong>Batch BT-1024 Completed</strong>
+                    <small>Production department</small>
+                </div>
+            </div>
+
+            <div class="activity">
+                <span class="activity-icon">🔬</span>
+                <div>
+                    <strong>QC Inspection Started</strong>
+                    <small>Quality control department</small>
+                </div>
+            </div>
+
+            <div class="activity">
+                <span class="activity-icon">📋</span>
+                <div>
+                    <strong>QA Documentation Updated</strong>
+                    <small>Quality assurance department</small>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        PharmaCare Dashboard Microservice | DevOps Demo Application
+    </footer>
+
+</main>
+
+<script>
+document.getElementById("date").textContent =
+    new Date().toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+    });
+</script>
+
+</body>
+</html>
 
